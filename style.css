@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: rgb(250, 234, 221);
+}
+
+body {
+  display: grid;
+  grid-template-columns: 70%;
+  justify-content: center;
+  justify-items: stretch;
+}
+
+header {
+  justify-self: center;
+  margin-bottom: 2rem;
+}
+
+li {
+  margin-bottom: 1rem;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+/* Use only for list placement */
+.grid {
+  display: grid;
+  grid-template-columns: 3fr 3fr 1fr 0.5fr;
+  justify-items: start;
+  gap: 1rem;
+  list-style: none;
+}
+
+.list-header {
+  border: 1px solid black;
+}
+
+/* .book {
+
+} */
+
+.open-form {
+  justify-self: center;
+  margin-top: 2rem;
+}
