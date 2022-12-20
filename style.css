@@ -1,10 +1,17 @@
+/* Variables */
+:root{
+  --bc-main: rgb(250, 234, 221);
+  --bc-modal: rgb(235, 231, 229);
+}
+
 * {
   margin: 0;
   padding: 0;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 html {
-  background-color: rgb(250, 234, 221);
+  background-color: var(--bc-main);
 }
 
 body {
@@ -41,11 +48,48 @@ li {
   border: 1px solid black;
 }
 
-/* .book {
-
-} */
-
 .open-form {
   justify-self: center;
   margin-top: 2rem;
+  background-color:var(--bc-main);
+  border: none;
+  color: black;
+  cursor: pointer;
+}
+
+.modal{
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 15px;
+}
+
+.close {
+  float: right;
+  height: 1rem;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* form content */
+.form-content {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 1rem;
+  padding: 2rem;
+  background-color: var(--bc-modal);
+}
+
+.read-radio {
+  grid-row: span 2;
 }
