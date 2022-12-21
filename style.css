@@ -1,13 +1,16 @@
 /* Variables */
-:root{
+:root {
   --bc-main: rgb(250, 234, 221);
   --bc-modal: rgb(235, 231, 229);
+  --border-radius: 15px;
+  --padding: 2rem;
 }
 
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 html {
@@ -19,6 +22,7 @@ body {
   grid-template-columns: 70%;
   justify-content: center;
   justify-items: stretch;
+  padding: var(--padding);
 }
 
 header {
@@ -26,8 +30,21 @@ header {
   margin-bottom: 2rem;
 }
 
+/* ul {
+  padding: var(--padding);
+} */
+
 li {
   margin-bottom: 1rem;
+  padding-left: var(--padding);
+  padding-right: var(--padding);
+}
+
+button {
+  padding: 1rem;
+  height: max-content;
+  width: max-content;
+  border-radius: var(--border-radius);
 }
 
 .list {
@@ -50,23 +67,28 @@ li {
 
 .open-form {
   justify-self: center;
-  margin-top: 2rem;
-  background-color:var(--bc-main);
-  border: none;
+  background-color: var(--bc-main);
   color: black;
   cursor: pointer;
 }
 
-.modal{
+.modal {
   display: none;
   position: fixed;
   z-index: 1;
   left: 50%;
-  top: 50%;
+  top: 55%;
   transform: translate(-50%, -50%);
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.4);
-  border-radius: 15px;
+  border-radius: var(--border-radius);
+}
+
+.form-container {
+  display: grid;
+  grid-template-columns: 1fr 2rem;
+  background-color: var(--bc-modal);
+  padding: var(--padding);
 }
 
 .close {
@@ -86,10 +108,18 @@ li {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
-  padding: 2rem;
-  background-color: var(--bc-modal);
+  padding: var(--padding);
 }
 
 .read-radio {
   grid-row: span 2;
+}
+
+.submit {
+  grid-column: span 2;
+  place-self: center;
+  padding: 1rem;
+  height: max-content;
+  width: max-content;
+  border-radius: var(--border-radius);
 }
