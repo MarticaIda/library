@@ -19,46 +19,51 @@
       <li class="grid book">
         <div class="info author">Joanne K. Rowling</div>
         <div class="info title">The Casual Vacancy</div>
-        <div class="info pages">7898</div>
+        <div class="info pages">503</div>
         <div class="info read">Yes</div>
       </li>
       <li class="grid book">
-        <div class="info author">Author</div>
-        <div class="info title">Title</div>
-        <div class="info pages">No. of pages</div>
-        <div class="info read">Read?</div>
+        <div class="info author">Robert Galbraith</div>
+        <div class="info title">The Cookoo's Calling</div>
+        <div class="info pages">464</div>
+        <div class="info read">Yes</div>
       </li>
     </ul>
-    <button class="open-form" type="button">Add book</button>
-    <div class="modal form-container">
-      <img src="icons/close.png" alt="Close" class="close" />
-      <form class="form-content" action="" method="get">
-        <label for="author">Author</label>
-        <input
-          type="text"
-          placeholder="Enter author's name"
-          name="author"
-          required
-        />
-        <label for="title">Title</label>
-        <input
-          type="text"
-          placeholder="Enter the book's title"
-          name="title"
-          required
-        />
-        <label for="pages">No. of Pages</label>
-        <input
-          type="text"
-          placeholder="Enter number of pages"
-          name="pages"
-          required
-        />
-        <label for="read" class="read-radio">Have you read it?</label>
-        <p><input type="radio" name="yes_no" value="yes" checked />Yes</p>
-        <p><input type="radio" name="yes_no" value="no" />No</p>
-      </form>
-      <button type="submit">Add a book</button>
+    <button class="open-form" type="button">Add a book</button>
+    <div class="modal">
+      <div class="form-container">
+        <form class="form-content" action="" method="post">
+          <label for="author">Author</label>
+          <input
+            type="text"
+            id="author"
+            placeholder="Jerome K. Jerome"
+            name="author"
+            required
+          />
+          <label for="title">Title</label>
+          <input
+            type="text"
+            id="title"
+            placeholder="Three Men in a Boat (To Say Nothing of the Dog)"
+            name="title"
+            required
+          />
+          <label for="pages">No. of Pages</label>
+          <input
+            type="number"
+            id="pages"
+            placeholder="197"
+            name="pages"
+            required
+          />
+          <label for="read" class="read-radio">Have you read it?</label>
+          <p><input type="radio" id="read" name="yes_no" value="yes" checked />Yes</p>
+          <p><input type="radio" id="read" name="yes_no" value="no" />No</p>
+        </form>
+        <img src="icons/close.png" alt="Close" class="close" />
+        <button class="submit" type="submit">Add</button>
+      </div>
     </div>
     <script src="script.js" defer></script>
   </body>
