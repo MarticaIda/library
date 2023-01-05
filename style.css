@@ -55,7 +55,7 @@ button {
 /* Use only for list placement */
 .grid {
   display: grid;
-  grid-template-columns: 3fr 3fr 1fr 0.5fr;
+  grid-template-columns: 3fr 3fr 1fr 0.5fr 0.5fr;
   justify-items: start;
   gap: 1rem;
   list-style: none;
