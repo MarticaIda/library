@@ -5,12 +5,16 @@ const myLibrary = [
 const readFormInput = document.querySelectorAll('#read');
 const form = document.querySelector('form');
 const table = document.querySelector('table');
+const body = document.querySelector('body');
 let data;
 let readBook;
 let removeBook;
 const openBtn = document.querySelector('.openBtn');
 const closeForm = document.querySelector('.close');
 const modal = document.querySelector('.modal');
+const deleteBtn = document.createElement('button');
+deleteBtn.setAttribute('class', 'btn');
+deleteBtn.textContent = 'Delete';
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -64,21 +68,14 @@ const addToMyLibrary = () => {
   generateTable(table, myLibrary);
   generateTableHead(table, data);
 
-  // function appendColumn () {
-  //   const row = document.querySelector('tr');
-  //   let i;
-  //   // open loop for each row and append cell
-  //   for (i = 0; i < table.rows.length; i++) {
-  //     removeBook = row.insertCell(-1);
-  //   }
-  // }
-
   readBook = document.querySelectorAll('tr td:nth-child(4)'); // select all cells with read status
   removeBook = document.querySelectorAll('tr td:nth-child(5)'); // select all cells with delete checkbox
 
   document.querySelector('form').reset(); // wipe out the form
 
   modal.style.display = 'none'; // close the form
+
+  body.appendChild(deleteBtn);
 }; // receive input and add the new book entry to the library
 
 openBtn.addEventListener('click', function () {
@@ -93,3 +90,8 @@ window.addEventListener('click', function (event) {
     modal.style.display = 'none';
   }
 }); // close the form by clicking anywhere on the modal
+
+deleteBtn.addEventListener('click', function () {
+  // select all elements with checked status in delete cell
+  // remove them from array myLibrary
+});
