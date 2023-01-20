@@ -30,16 +30,6 @@ header {
   margin-bottom: 2rem;
 }
 
-/* ul {
-  padding: var(--padding);
-} */
-
-li {
-  margin-bottom: 1rem;
-  padding-left: var(--padding);
-  padding-right: var(--padding);
-}
-
 button {
   padding: 1rem;
   height: max-content;
@@ -65,7 +55,7 @@ button {
   border: 1px solid black;
 }
 
-.open-form {
+.openBtn {
   justify-self: center;
   background-color: var(--bc-main);
   color: black;

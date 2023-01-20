@@ -9,56 +9,43 @@
   </head>
   <body>
     <header>Library</header>
-    <ul class="list">
-      <li class="grid list-header">
-        <div>Author</div>
-        <div>Title</div>
-        <div>No. of pages</div>
-        <div>Read?</div>
-        <div>Delete</div>
-      </li>
-      <li class="grid book">
-        <div class="info author">Joanne K. Rowling</div>
-        <div class="info title">The Casual Vacancy</div>
-        <div class="info pages">503</div>
-        <div class="info read">Yes</div>
-        <div class="delete"></div>
-      </li>
-    </ul>
-    <button class="open-form" type="button">Add a book</button>
+    <table></table>
+    <button class="openBtn" type="button">Add a book</button>
     <div class="modal">
       <div class="form-container">
         <form class="form-content" action="" method="post">
-          <label for="author">Author</label>
+          <label for="Author">Author</label>
           <input
             type="text"
             id="author"
             placeholder="Jerome K. Jerome"
-            name="author"
+            name="Author"
             required
           />
-          <label for="title">Title</label>
+          <label for="Title">Title</label>
           <input
             type="text"
             id="title"
             placeholder="Three Men in a Boat (To Say Nothing of the Dog)"
-            name="title"
+            name="Title"
             required
           />
-          <label for="pages">No. of Pages</label>
+          <label for="Pages">No. of Pages</label>
           <input
             type="number"
             id="pages"
             placeholder="197"
-            name="pages"
+            name="Pages"
             required
           />
-          <label for="read" class="read-radio">Have you read it?</label>
-          <p><input type="radio" id="read" name="read" value="yes" checked />Yes</p>
-          <p><input type="radio" id="read" name="read" value="no" />No</p>
+          <label for="Read" class="read-radio">Have you read it?</label>
+          <p>
+            <input type="radio" id="read" name="Read" value="yes" checked />Yes
+          </p>
+          <p><input type="radio" id="read" name="Read" value="no" />No</p>
+          <button class="submit" type="submit">Add</button>
         </form>
         <img src="icons/close.png" alt="Close" class="close" />
-        <button class="submit" type="submit">Add</button>
       </div>
     </div>
     <script src="script.js" defer></script>
