@@ -9,41 +9,49 @@
   </head>
   <body>
     <header>Library</header>
-    <table></table>
-    <button class="openBtn" type="button">Add a book</button>
+    <table id="table">
+      <thead>
+        <th>Author</th>
+        <th>Title</th>
+        <th>Pages</th>
+        <th>Read</th>
+        <th>Delete?</th>
+      </thead>
+    </table>
+    <button class="openBtn btn" type="button">Add a book</button>
     <div class="modal">
       <div class="form-container">
         <form class="form-content" action="" method="post">
-          <label for="Author">Author</label>
+          <label for="author">Author</label>
           <input
             type="text"
             id="author"
             placeholder="Jerome K. Jerome"
-            name="Author"
+            name="author"
             required
           />
-          <label for="Title">Title</label>
+          <label for="title">Title</label>
           <input
             type="text"
             id="title"
             placeholder="Three Men in a Boat (To Say Nothing of the Dog)"
-            name="Title"
+            name="title"
             required
           />
-          <label for="Pages">No. of Pages</label>
+          <label for="pages">No. of Pages</label>
           <input
             type="number"
             id="pages"
             placeholder="197"
-            name="Pages"
+            name="pages"
             required
           />
-          <label for="Read" class="read-radio">Have you read it?</label>
+          <label for="read" class="read-radio">Have you read it?</label>
           <p>
-            <input type="radio" id="read" name="Read" value="yes" checked />Yes
+            <input type="radio" id="read" name="read" value="yes" checked />Yes
           </p>
-          <p><input type="radio" id="read" name="Read" value="no" />No</p>
-          <button class="submit" type="submit">Add</button>
+          <p><input type="radio" id="read" name="read" value="no" />No</p>
+          <button id="submit" type="submit" value="Submit">Add</button>
         </form>
         <img src="icons/close.png" alt="Close" class="close" />
       </div>

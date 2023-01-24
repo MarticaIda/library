@@ -51,6 +51,17 @@ button {
   list-style: none;
 }
 
+table {
+  display: none;
+  width: 100%;
+}
+
+th,
+td {
+  border-bottom: 1px solid #ddd;;
+  padding: 1rem;
+}
+
 .list-header {
   border: 1px solid black;
 }
@@ -105,7 +116,7 @@ button {
   grid-row: span 2;
 }
 
-.submit {
+#submit {
   grid-column: span 2;
   place-self: center;
   padding: 1rem;
