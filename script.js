@@ -8,7 +8,6 @@ const openBtn = document.querySelector('.openBtn');
 const closeForm = document.querySelector('.close');
 const modal = document.querySelector('.modal');
 const deleteBtn = document.createElement('button');
-let temp2;
 
 deleteBtn.setAttribute('class', 'btn');
 deleteBtn.textContent = 'Delete';
@@ -44,7 +43,6 @@ form.addEventListener('submit', (e) => {
 });
 
 const generateTable = function () {
-  let temp;
   table.style.display = 'block';
   const rowCount = table.rows.length;
   for (let i = rowCount - 1; i > 0; i--) {
@@ -52,15 +50,10 @@ const generateTable = function () {
   }
   for (let i = 0; i < myLibrary.length; i++) {
     const row = tbody.insertRow(-1);
-    const data = Object.values(myLibrary[i]);
+    const data = Object.values(myLibrary[i]).slice(0, 3);
     data.forEach((value) => (row.insertCell().textContent = value));
-    const dCell = row.insertCell(-1);
-    const input = document.createElement('input');
-    input.setAttribute('type', 'checkbox');
-    dCell.appendChild(input);
-    temp = myLibrary[i].read;
-
-    const rCell = document.querySelectorAll('tr td:nth-child(4)');
+    const rValue = myLibrary[i].read;
+    const rCell = row.insertCell(-1);
     const select = document.createElement('select');
     select.id = 'select';
     const options = ['yes', 'no'];
@@ -69,19 +62,22 @@ const generateTable = function () {
       option.value = options[i];
       option.text = options[i];
       select.appendChild(option);
-      if (option.value === temp) {
+      if (option.value === rValue) {
         option.selected = true;
-        temp2 = option.value;
-        for (let i = 0; i < rCell.length; i++) {
-          rCell[i].appendChild(select);
-        }
       }
     }
-    select.addEventListener('change', (e) => {
+    rCell.appendChild(select);
+    select.addEventListener('change', () => {
       myLibrary[i].read = select.value;
     });
+    const dCell = row.insertCell(-1);
+    const input = document.createElement('input');
+    input.setAttribute('type', 'checkbox');
+    dCell.appendChild(input);
+    input.addEventListener('click', () => {
+      myLibrary[i].delete = true;
+    }); // pass delete value to book object
   }
-  console.log(temp2);
   form.reset();
   modal.style.display = 'none';
   body.appendChild(deleteBtn);
@@ -90,4 +86,11 @@ closeForm.addEventListener('click', function () {
   modal.style.display = 'none';
 });
 
-deleteBtn.addEventListener('click', function () {});
+deleteBtn.addEventListener('click', function () {
+  for (let i = myLibrary.length - 1; i >= 0; --i) {
+    if (myLibrary[i].delete === true) {
+      myLibrary.splice(i, 1);
+    }
+  }
+  console.log(myLibrary);
+});
