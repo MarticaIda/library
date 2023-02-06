@@ -1,16 +1,16 @@
 const myLibrary = [];
-
 const body = document.querySelector('body');
 const form = document.querySelector('form');
 const table = document.querySelector('table');
 const tbody = document.querySelector('tbody');
-const openBtn = document.querySelector('.openBtn');
-const closeForm = document.querySelector('.close');
+const openBtn = document.getElementById('btnOpen');
+const closeForm = document.getElementById('close');
 const modal = document.querySelector('.modal');
+const btnContainer = document.getElementById('btnContainer');
 const deleteBtn = document.createElement('button');
 
-deleteBtn.setAttribute('class', 'btn');
-deleteBtn.textContent = 'Delete';
+deleteBtn.setAttribute('id', 'btnDelete');
+deleteBtn.textContent = 'Delete books';
 
 openBtn.addEventListener('click', function () {
   modal.style.display = 'block';
@@ -52,6 +52,8 @@ const generateTable = function () {
     const row = tbody.insertRow(-1);
     const data = Object.values(myLibrary[i]).slice(0, 3);
     data.forEach((value) => (row.insertCell().textContent = value));
+    const cCell = row.insertCell(1);
+    cCell.textContent += 1;
     const rValue = myLibrary[i].read;
     const rCell = row.insertCell(-1);
     const select = document.createElement('select');
@@ -78,9 +80,12 @@ const generateTable = function () {
       myLibrary[i].delete = true;
     }); // pass delete value to book object
   }
+  const titleText = document.querySelectorAll('tr td:nth-child(2)');
+  console.log(titleText);
+  // titleText.setAttribute('class', 'titleText');
   form.reset();
   modal.style.display = 'none';
-  body.appendChild(deleteBtn);
+  btnContainer.appendChild(deleteBtn);
 };
 closeForm.addEventListener('click', function () {
   modal.style.display = 'none';
@@ -92,5 +97,8 @@ deleteBtn.addEventListener('click', function () {
       myLibrary.splice(i, 1);
     }
   }
-  console.log(myLibrary);
 });
+// to do:
+// make so that table 'refreshes' every time delete button is pressed --- MAYBE
+
+// Fun side projects: 1) make the table sortable by author's name, 2) add Date added property and 3) make sortable by Date added, 4) add numeration as the first column
