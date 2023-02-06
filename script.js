@@ -8,7 +8,6 @@ const closeForm = document.getElementById('close');
 const modal = document.querySelector('.modal');
 const btnContainer = document.getElementById('btnContainer');
 const deleteBtn = document.createElement('button');
-
 deleteBtn.setAttribute('id', 'btnDelete');
 deleteBtn.textContent = 'Delete books';
 
@@ -43,17 +42,19 @@ form.addEventListener('submit', (e) => {
 });
 
 const generateTable = function () {
+  let n = 0;
   table.style.display = 'block';
   const rowCount = table.rows.length;
   for (let i = rowCount - 1; i > 0; i--) {
     table.deleteRow(i);
   }
+  let cCell;
   for (let i = 0; i < myLibrary.length; i++) {
     const row = tbody.insertRow(-1);
     const data = Object.values(myLibrary[i]).slice(0, 3);
     data.forEach((value) => (row.insertCell().textContent = value));
-    const cCell = row.insertCell(1);
-    cCell.textContent += 1;
+    cCell = row.insertCell(0);
+    cCell.textContent = n += 1;
     const rValue = myLibrary[i].read;
     const rCell = row.insertCell(-1);
     const select = document.createElement('select');
@@ -80,9 +81,6 @@ const generateTable = function () {
       myLibrary[i].delete = true;
     }); // pass delete value to book object
   }
-  const titleText = document.querySelectorAll('tr td:nth-child(2)');
-  console.log(titleText);
-  // titleText.setAttribute('class', 'titleText');
   form.reset();
   modal.style.display = 'none';
   btnContainer.appendChild(deleteBtn);
@@ -101,4 +99,4 @@ deleteBtn.addEventListener('click', function () {
 // to do:
 // make so that table 'refreshes' every time delete button is pressed --- MAYBE
 
-// Fun side projects: 1) make the table sortable by author's name, 2) add Date added property and 3) make sortable by Date added, 4) add numeration as the first column
+// Fun side projects: 1) make the table sortable by author's name, 2) add Date added property and 3) make sortable by Date added
