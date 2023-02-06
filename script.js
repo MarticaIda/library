@@ -95,8 +95,8 @@ deleteBtn.addEventListener('click', function () {
       myLibrary.splice(i, 1);
     }
   }
+  generateTable();
 });
 // to do:
-// make so that table 'refreshes' every time delete button is pressed --- MAYBE
 
 // Fun side projects: 1) make the table sortable by author's name, 2) add Date added property and 3) make sortable by Date added
