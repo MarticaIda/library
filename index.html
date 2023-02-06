@@ -19,9 +19,10 @@
       </thead>
       <tbody></tbody>
     </table>
-    <button class="openBtn btn" type="button">Add a book</button>
+    <div id="btnContainer"><button id="btnOpen" type="button">Add your books</button></div>
     <div class="modal">
       <div class="form-container">
+        <img src="icons/close.png" alt="Close" id="close" />
         <form class="form-content" action="" method="post">
           <label for="author">Author</label>
           <input
@@ -52,9 +53,8 @@
             <input type="radio" id="read" name="read" value="yes" checked />Yes
           </p>
           <p><input type="radio" id="read" name="read" value="no" />No</p>
-          <button id="submit" type="submit" value="Submit">Add</button>
+          <button id="submit" type="submit" value="Submit">Submit</button>
         </form>
-        <img src="icons/close.png" alt="Close" class="close" />
       </div>
     </div>
     <script src="script.js" defer></script>
