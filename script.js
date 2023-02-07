@@ -7,6 +7,8 @@ const openBtn = document.getElementById('btnOpen');
 const closeForm = document.getElementById('close');
 const modal = document.querySelector('.modal');
 const btnContainer = document.getElementById('btnContainer');
+const sorterTitle = document.getElementById('hTitle');
+const sorterAuthor = document.getElementById('hAuthor');
 const deleteBtn = document.createElement('button');
 deleteBtn.setAttribute('id', 'btnDelete');
 deleteBtn.textContent = 'Delete books';
@@ -32,8 +34,8 @@ form.addEventListener('submit', (e) => {
   e.preventDefault();
 
   const book = new Book(
-    document.getElementById('author').value,
-    document.getElementById('title').value,
+    document.getElementById('author').value.toLowerCase().replace(/(^.|\s+.)/g, m => m.toUpperCase()),
+    document.getElementById('title').value.toLowerCase().replace(/(^.|\s+.)/g, m => m.toUpperCase()),
     document.getElementById('pages').value,
     document.querySelector('input[name="read"]:checked').value
   );
@@ -97,6 +99,82 @@ deleteBtn.addEventListener('click', function () {
   }
   generateTable();
 });
-// to do:
 
-// Fun side projects: 1) make the table sortable by author's name, 2) add Date added property and 3) make sortable by Date added
+let orderA = true;
+let orderT = true;
+
+sorterTitle.addEventListener('click', () => {
+  if (orderT) sortByTitleAcc();
+  else sortByTitleDec();
+});
+sorterAuthor.addEventListener('click', () => {
+  if (orderA) sortByAuthorAcc();
+  else sortByAuthorDec();
+});
+
+function sortByAuthorAcc () {
+  myLibrary.sort(function (book1, book2) {
+    const a = book1.author.toUpperCase();
+    const b = book2.author.toUpperCase();
+    if (a < b) {
+      return -1;
+    }
+    if (b > a) {
+      return 1;
+    }
+    return 0;
+  });
+  orderA = false;
+  generateTable();
+}
+function sortByAuthorDec () {
+  myLibrary.sort(function (book1, book2) {
+    const a = book1.author.toUpperCase();
+    const b = book2.author.toUpperCase();
+    if (a > b) {
+      return -1;
+    }
+    if (b < a) {
+      return 1;
+    }
+    return 0;
+  });
+  orderA = true;
+  generateTable();
+}
+
+function sortByTitleAcc () {
+  myLibrary.sort(function (book1, book2) {
+    const a = book1.title.toUpperCase();
+    const b = book2.title.toUpperCase();
+    if (a < b) {
+      return -1;
+    }
+    if (b > a) {
+      return 1;
+    }
+    return 0;
+  });
+  orderT = false;
+  generateTable();
+}
+
+function sortByTitleDec () {
+  myLibrary.sort(function (book1, book2) {
+    const a = book1.title.toUpperCase();
+    const b = book2.title.toUpperCase();
+    if (a > b) {
+      return -1;
+    }
+    if (b < a) {
+      return 1;
+    }
+    return 0;
+  });
+  orderT = true;
+  generateTable();
+}
+
+// to do:
+// force author and title to first upper case
+// Fun side projects: 2) add Date added property and 3) make sortable by Date added
