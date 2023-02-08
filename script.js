@@ -9,6 +9,7 @@ const modal = document.querySelector('.modal');
 const btnContainer = document.getElementById('btnContainer');
 const sorterTitle = document.getElementById('hTitle');
 const sorterAuthor = document.getElementById('hAuthor');
+const sorterDate = document.getElementById('hDate');
 const deleteBtn = document.createElement('button');
 deleteBtn.setAttribute('id', 'btnDelete');
 deleteBtn.textContent = 'Delete books';
@@ -23,22 +24,51 @@ window.addEventListener('click', function (event) {
   }
 });
 
-function Book (author, title, pages, read) {
+function Book (author, title, pages, read, date) {
+  const dateAdded = new Date();
   this.author = author;
   this.title = title;
   this.pages = pages;
   this.read = read;
+  this.date = (function () {
+    const currentDate =
+      dateAdded.getFullYear() +
+      '-' +
+      (dateAdded.getMonth() + 1) +
+      '-' +
+      dateAdded.getDate();
+    const currentTime =
+      dateAdded.getHours() +
+      ':' +
+      dateAdded.getMinutes() +
+      ':' +
+      dateAdded.getSeconds();
+    date = currentDate + ' ' + currentTime;
+    return date;
+  })();
+  // Object.defineProperty(this, 'date', {
+  //   get function () {
+  //     return date;
+  //   }
+  // });
 }
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
 
   const book = new Book(
-    document.getElementById('author').value.toLowerCase().replace(/(^.|\s+.)/g, m => m.toUpperCase()),
-    document.getElementById('title').value.toLowerCase().replace(/(^.|\s+.)/g, m => m.toUpperCase()),
+    document
+      .getElementById('author')
+      .value.toLowerCase()
+      .replace(/(^.|\s+.)/g, (m) => m.toUpperCase()),
+    document
+      .getElementById('title')
+      .value.toLowerCase()
+      .replace(/(^.|\s+.)/g, (m) => m.toUpperCase()),
     document.getElementById('pages').value,
     document.querySelector('input[name="read"]:checked').value
   );
+
   myLibrary.push(book);
   generateTable();
 });
@@ -50,13 +80,14 @@ const generateTable = function () {
   for (let i = rowCount - 1; i > 0; i--) {
     table.deleteRow(i);
   }
-  let cCell;
   for (let i = 0; i < myLibrary.length; i++) {
     const row = tbody.insertRow(-1);
     const data = Object.values(myLibrary[i]).slice(0, 3);
     data.forEach((value) => (row.insertCell().textContent = value));
-    cCell = row.insertCell(0);
+    // makes counter
+    const cCell = row.insertCell(0);
     cCell.textContent = n += 1;
+    // passes and changes read value
     const rValue = myLibrary[i].read;
     const rCell = row.insertCell(-1);
     const select = document.createElement('select');
@@ -75,6 +106,10 @@ const generateTable = function () {
     select.addEventListener('change', () => {
       myLibrary[i].read = select.value;
     });
+    // add dateAdded cell
+    const dateCell = row.insertCell(-1);
+    dateCell.textContent = myLibrary[i].date;
+    // selects entries to delete
     const dCell = row.insertCell(-1);
     const input = document.createElement('input');
     input.setAttribute('type', 'checkbox');
@@ -111,11 +146,12 @@ sorterAuthor.addEventListener('click', () => {
   if (orderA) sortByAuthorAcc();
   else sortByAuthorDec();
 });
+sorterDate.addEventListener('click', sortByDate);
 
 function sortByAuthorAcc () {
   myLibrary.sort(function (book1, book2) {
-    const a = book1.author.toUpperCase();
-    const b = book2.author.toUpperCase();
+    const a = book1.author;
+    const b = book2.author;
     if (a < b) {
       return -1;
     }
@@ -129,8 +165,8 @@ function sortByAuthorAcc () {
 }
 function sortByAuthorDec () {
   myLibrary.sort(function (book1, book2) {
-    const a = book1.author.toUpperCase();
-    const b = book2.author.toUpperCase();
+    const a = book1.author;
+    const b = book2.author;
     if (a > b) {
       return -1;
     }
@@ -145,8 +181,8 @@ function sortByAuthorDec () {
 
 function sortByTitleAcc () {
   myLibrary.sort(function (book1, book2) {
-    const a = book1.title.toUpperCase();
-    const b = book2.title.toUpperCase();
+    const a = book1.title;
+    const b = book2.title;
     if (a < b) {
       return -1;
     }
@@ -161,8 +197,8 @@ function sortByTitleAcc () {
 
 function sortByTitleDec () {
   myLibrary.sort(function (book1, book2) {
-    const a = book1.title.toUpperCase();
-    const b = book2.title.toUpperCase();
+    const a = book1.title;
+    const b = book2.title;
     if (a > b) {
       return -1;
     }
@@ -175,6 +211,11 @@ function sortByTitleDec () {
   generateTable();
 }
 
-// to do:
-// force author and title to first upper case
-// Fun side projects: 2) add Date added property and 3) make sortable by Date added
+function sortByDate () {
+  myLibrary.sort(function (book1, book2) {
+    const a = Date.parse(book1.date);
+    const b = Date.parse(book2.date);
+    return a - b;
+  });
+  generateTable();
+}
