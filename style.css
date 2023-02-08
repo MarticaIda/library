@@ -53,41 +53,48 @@ button:active {
 
 table {
   display: none;
+  table-layout: fixed;
   width: 100%;
 }
 
 th,
 td {
-  border-bottom: 1px solid #ddd;
   padding: 1rem;
+  border-bottom: 1px solid #ddd;
 }
 
 td {
   text-align: justify;
 }
 
-tbody tr td:nth-child(1),
-tbody tr td:nth-child(2) {
-  width: 50%;
+.name {
+  width:37.5%;
 }
 
-tbody tr td:nth-child(1) {
+.data {
+  width: 25%;
+}
+
+
+tbody tr td:nth-child(2) {
   font-weight: 600;
 }
 
-tbody tr td:nth-child(2) {
+tbody tr td:nth-child(3) {
   font-style: italic;
 }
 
-tbody tr td:nth-child(3),
-tbody tr td:nth-child(5) {
+tbody tr td:nth-child(4),
+tbody tr td:nth-child(5),
+tbody tr td:nth-child(6),
+tbody tr td:nth-child(7) {
   text-align: center;
 }
 
 #btnContainer {
   display: flex;
-  justify-content: center;
   gap: 1.5rem;
+  justify-content: center;
 }
 
 #btnOpen {
@@ -118,27 +125,28 @@ tbody tr td:nth-child(5) {
 .form-container {
   display: grid;
   grid-template-rows: 2rem 1fr;
-  background-color: var(--bc-modal);
   padding: 1rem;
+  background-color: var(--bc-modal);
 }
 
 #close {
-  float: left;
   height: 1rem;
+  float: left;
 }
 
 #close:hover,
 #close:focus {
-  color: #000;
   cursor: pointer;
+  color: #000;
+
   text-decoration: none;
 }
 
 /* form content */
 .form-content {
   display: grid;
-  grid-template-columns: 1fr 2fr;
   gap: 1rem;
+  grid-template-columns: 1fr 2fr;
 }
 
 .read-radio {

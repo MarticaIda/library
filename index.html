@@ -10,16 +10,29 @@
   <body>
     <header>Library</header>
     <table id="table">
+      <colgroup>
+        <col />
+        <col class="name" />
+        <col class="name" />
+        <col />
+        <col />
+        <col class="data" />
+        <col />
+      </colgroup>
       <thead>
-        <th>Author</th>
-        <th>Title</th>
+        <th>#</th>
+        <th id="hAuthor">Author</th>
+        <th id="hTitle">Title</th>
         <th>Pages</th>
         <th>Read</th>
+        <th id="hDate">Date added</th>
         <th>Delete?</th>
       </thead>
       <tbody></tbody>
     </table>
-    <div id="btnContainer"><button id="btnOpen" type="button">Add your books</button></div>
+    <div id="btnContainer">
+      <button id="btnOpen" type="button">Add your books</button>
+    </div>
     <div class="modal">
       <div class="form-container">
         <img src="icons/close.png" alt="Close" id="close" />
