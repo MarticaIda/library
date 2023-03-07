@@ -23,14 +23,17 @@ window.addEventListener('click', function (event) {
     modal.style.display = 'none';
   }
 });
+class Book {
+  constructor (author, title, pages, read, date) {
+    this.author = author;
+    this.title = title;
+    this.pages = pages;
+    this.read = read;
+    this.date = this.getDate();
+  }
 
-function Book (author, title, pages, read, date) {
-  const dateAdded = new Date();
-  this.author = author;
-  this.title = title;
-  this.pages = pages;
-  this.read = read;
-  this.date = (function () {
+  getDate () {
+    const dateAdded = new Date();
     const currentDate =
       dateAdded.getFullYear() +
       '-' +
@@ -43,14 +46,9 @@ function Book (author, title, pages, read, date) {
       dateAdded.getMinutes() +
       ':' +
       dateAdded.getSeconds();
-    date = currentDate + ' ' + currentTime;
-    return date;
-  })();
-  // Object.defineProperty(this, 'date', {
-  //   get function () {
-  //     return date;
-  //   }
-  // });
+    this.date = currentDate + ' ' + currentTime;
+    return this.date;
+  }
 }
 
 form.addEventListener('submit', (e) => {
