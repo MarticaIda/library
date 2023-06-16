@@ -61,11 +61,15 @@
             name="pages"
             required
           />
-          <label for="read" class="read-radio">Have you read it?</label>
+          <p class="read-radio">Have you read it?</p>
           <p>
-            <input type="radio" id="read" name="read" value="yes" checked />Yes
+            <input type="radio" id="yes" name="read" value="yes" checked />
+            <label for="yes">Yes</label>
           </p>
-          <p><input type="radio" id="read" name="read" value="no" />No</p>
+          <p>
+            <input type="radio" id="no" name="read" value="no" />
+            <label for="no">No</label>
+          </p>
           <button id="submit" type="submit" value="Submit">Submit</button>
         </form>
       </div>
