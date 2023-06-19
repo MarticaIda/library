@@ -153,3 +153,11 @@ tbody tr td:nth-child(7) {
   grid-row: span 2;
   line-height: 2rem;
 }
+
+input:invalid {
+  border: 2px dashed red;
+}
+
+input:valid {
+  border: 2px solid black;
+}
